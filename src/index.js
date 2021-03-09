@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Box, Inline, Heading, Text } from '@sanity/ui'
 
-const NoteField = ({ type }) => {
+const NoteField = React.forwardRef(({ type }, ref) => {
   const { options } = type
   const { icon, headline, message, tone } = options
 
@@ -10,14 +10,18 @@ const NoteField = ({ type }) => {
   const CustomIcon = icon
 
   return (
-    <Card padding={[3, 3, 4]} radius={3} shadow={1} tone={tone || 'primary'}>
+    <Card
+      ref={ref}
+      padding={[3, 3, 4]}
+      radius={3}
+      shadow={1}
+      tone={tone || 'primary'}
+    >
       {headline && (
         <Box marginBottom={3}>
           <Inline space={[1]}>
             {icon && <CustomIcon style={{ fontSize: 24 }} />}
-            <Heading as="h5" size={1}>
-              {headline}
-            </Heading>
+            <Heading size={1}>{headline}</Heading>
           </Inline>
         </Box>
       )}
@@ -28,6 +32,6 @@ const NoteField = ({ type }) => {
       </Inline>
     </Card>
   )
-}
+})
 
 export default NoteField

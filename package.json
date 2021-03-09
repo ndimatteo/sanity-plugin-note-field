@@ -1,5 +1,5 @@
 {
-  "name": "sanity-note-field",
+  "name": "sanity-plugin-note-field",
   "version": "1.0.0",
   "description": "Display notes in your schemas.",
   "keywords": [
@@ -12,9 +12,9 @@
   "author": "Nick DiMatteo <hello@nickdimatteo.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ndimatteo/sanity-note-field/issues"
+    "url": "https://github.com/ndimatteo/sanity-plugin-note-field/issues"
   },
-  "homepage": "https://github.com/ndimatteo/sanity-note-field#readme",
+  "homepage": "https://github.com/ndimatteo/sanity-plugin-note-field#readme",
   "main": "dist/index.js",
   "scripts": {
     "build": "babel src -d dist --copy-files",
