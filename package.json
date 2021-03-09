@@ -1,0 +1,47 @@
+{
+  "name": "sanity-note-field",
+  "version": "1.0.0",
+  "description": "Display notes in your schemas.",
+  "keywords": [
+    "sanity",
+    "plugin",
+    "note",
+    "custom input",
+    "sanity field"
+  ],
+  "author": "Nick DiMatteo <hello@nickdimatteo.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ndimatteo/sanity-note-field/issues"
+  },
+  "homepage": "https://github.com/ndimatteo/sanity-note-field#readme",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel src -d dist --copy-files",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.12.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10"
+  },
+  "peerDependencies": {
+    "@sanity/base": "^2.1.1",
+    "@sanity/components": "^2.1.0",
+    "@sanity/ui": "^0.33.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
+  },
+  "sanityTemplate": {
+    "suggestedName": "note-field",
+    "requiresConfig": false,
+    "minimumBaseVersion": "2.1.0"
+  }
+}
