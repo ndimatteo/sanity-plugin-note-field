@@ -2,8 +2,10 @@
   Sanity Note Fields
 </h3>
 <p align="center">
-  <strong>Display inline notes in your schemas!</strong>
+  <strong>✨ Display inline notes in your schemas ✨</strong>
 </p>
+
+![sanity-note-field](https://user-images.githubusercontent.com/737188/110528285-fcad1600-80e5-11eb-9551-1809cb8c42a3.png)
 
 ## Install
 
