@@ -1,4 +1,4 @@
-import NoteField from '../dist'
+import NoteField from './note'
 
 export default {
   title: 'Note',

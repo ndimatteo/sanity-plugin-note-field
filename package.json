@@ -1,6 +1,6 @@
 {
   "name": "sanity-plugin-note-field",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "Display notes in your schemas.",
   "keywords": [
     "sanity",
@@ -14,11 +14,11 @@
   "bugs": {
     "url": "https://github.com/ndimatteo/sanity-plugin-note-field/issues"
   },
-  "homepage": "https://github.com/ndimatteo/sanity-plugin-note-field#readme",
-  "main": "dist/index.js",
+  "homepage": "https://github.com/ndimatteo/sanity-plugin-note-field",
+  "main": "dist/note.js",
   "scripts": {
-    "build": "babel src -d dist --copy-files",
-    "prepublish": "npm run build"
+    "build": "babel -D -d dist/ src/",
+    "prepublishOnly": "yarn build"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5"
