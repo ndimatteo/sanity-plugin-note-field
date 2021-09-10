@@ -28,7 +28,7 @@ const NoteField = React.forwardRef(({ type }, ref) => {
 
       <Inline space={[2]}>
         {icon && !headline && <CustomIcon style={{ fontSize: 24 }} />}
-        <Text size={[1, 1, 1]} dangerouslySetInnerHTML={{ __html: message }} />
+        <Text size={[1, 1, 1]}>{message}</Text>
       </Inline>
     </Card>
   )
