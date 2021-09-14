@@ -34,13 +34,17 @@ Use it in your schema types:
 You can also customize the color, add an icon and/or headline:
 
 ```js
+import React from 'react'
+
+...
+
 {
   name: 'gridNote2',
   type: 'note',
   options: {
     icon: FiAlertCircle,
     headline: 'Hold up!',
-    message: `A custom HTML message: <a href="#0" target="_blank">click here</a>`,
+    message: <>A custom HTML message: <a href="#0" target="_blank">click here</a></>,
     tone: 'caution'
   }
 }
