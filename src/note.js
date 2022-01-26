@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Box, Inline, Heading, Text } from '@sanity/ui'
+import { Card, Flex, Box, Inline, Heading, Text } from '@sanity/ui'
 
 const NoteField = React.forwardRef(({ type }, ref) => {
   const { options } = type
@@ -26,10 +26,14 @@ const NoteField = React.forwardRef(({ type }, ref) => {
         </Box>
       )}
 
-      <Inline space={[2]}>
-        {icon && !headline && <CustomIcon style={{ fontSize: 24 }} />}
-        <Text size={[1, 1, 1]}>{message}</Text>
-      </Inline>
+      <Flex>
+        <Box style={{ flexShrink: 0 }}>
+          {icon && !headline && <CustomIcon style={{ fontSize: 24 }} />}
+        </Box>
+        <Box marginLeft={!headline ? 3 : 0}>
+          <Text size={[1, 1, 1]}>{message}</Text>
+        </Box>
+      </Flex>
     </Card>
   )
 })
