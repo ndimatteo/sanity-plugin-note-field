@@ -18,6 +18,28 @@ npm i sanity-plugin-note-field
 
 ## Usage
 
+Add it to your Sanity config `new in V3`.
+
+```js
+import { note } from 'sanity-plugin-note-field'
+
+export default createConfig([
+	{
+		name: 'default',
+		title: '',
+		projectId: '',
+		dataset: '',
+		basePath: '',
+		plugins: [
+			note()
+		],
+		schema: {
+			types: schemaTypes
+		}
+	}
+])
+```
+
 Use it in your schema types:
 
 ```js
@@ -32,6 +54,7 @@ Use it in your schema types:
 
 ## Options
 
+When using an HTML message in Typescript ensure you're in a .tsx file.
 You can also customize the color, add an icon and/or headline:
 
 ```js
