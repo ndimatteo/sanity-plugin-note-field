@@ -6,7 +6,7 @@ type noteSchemaType = Omit<ObjectSchemaType, 'options'> & {
 	options?: {
 		icon?: any
 		headline?: string
-		message: string
+		message: any
 		tone?: any
 	}
 }
@@ -17,12 +17,12 @@ interface noteInputValue {
 
 type noteInputProps = ObjectInputProps<noteInputValue, noteSchemaType>
 
-export function noteInput(args: noteInputProps) {
+export const noteInput = React.forwardRef((args: noteInputProps, ref: any) => {
 	const { options } = args.schemaType
 	const icon = options?.icon
 	const headline = options?.headline
 	const message = options?.message
-	const tone = options?.tone ? options?.tone : 'primary';
+	const tone = options?.tone
 
 	if (!message) return null
 
@@ -30,10 +30,11 @@ export function noteInput(args: noteInputProps) {
 
 	return (
 		<Card
+			ref={ref}
 			padding={[3, 3, 4]}
 			radius={3}
 			shadow={1}
-			tone={tone}
+			tone={tone || 'primary'}
 		>
 			{headline && (
 				<Box marginBottom={3}>
@@ -54,4 +55,4 @@ export function noteInput(args: noteInputProps) {
 			</Flex>
 		</Card>
 	)
-}
+})
