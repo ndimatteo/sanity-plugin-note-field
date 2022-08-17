@@ -3,6 +3,7 @@
 </h3>
 <p align="center">
   <strong>✨ Display inline notes in your schemas ✨</strong>
+  Now Ready for Sanity Studio V3
 </p>
 
 ![sanity-note-field](https://user-images.githubusercontent.com/737188/110528285-fcad1600-80e5-11eb-9551-1809cb8c42a3.png)
@@ -12,10 +13,32 @@
 Run the following command in your studio folder using the Sanity CLI:
 
 ```sh
-sanity install note-field
+npm i sanity-plugin-note-field
 ```
 
 ## Usage
+
+Add it to your Sanity config `new in V3`.
+
+```js
+import { note } from 'sanity-plugin-note-field'
+
+export default createConfig([
+	{
+		name: 'default',
+		title: '',
+		projectId: '',
+		dataset: '',
+		basePath: '',
+		plugins: [
+			note()
+		],
+		schema: {
+			types: schemaTypes
+		}
+	}
+])
+```
 
 Use it in your schema types:
 
@@ -31,6 +54,7 @@ Use it in your schema types:
 
 ## Options
 
+When using an HTML message in Typescript ensure you're in a .tsx file.
 You can also customize the color, add an icon and/or headline:
 
 ```js
@@ -64,4 +88,5 @@ import React from 'react'
 ### MIT
 > [nickdimatteo.com](https://nickdimatteo.com) &nbsp;&middot;&nbsp;
 > Github [@ndimatteo](https://github.com/ndimatteo) &nbsp;&middot;&nbsp;
+> Github [@soulelyhayden](https://github.com/soulelyhayden) &nbsp;&middot;&nbsp;
 > Instagram [@ndimatteo](https://instagram.com/ndimatteo)
