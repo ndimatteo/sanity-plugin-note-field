@@ -88,5 +88,5 @@ import React from 'react'
 ### MIT
 > [nickdimatteo.com](https://nickdimatteo.com) &nbsp;&middot;&nbsp;
 > Github [@ndimatteo](https://github.com/ndimatteo) &nbsp;&middot;&nbsp;
-> Github [@soulelyhayden](https://github.com/soulelyhayden) &nbsp;&middot;&nbsp;
+> Github [@svey](https://github.com/svey-xyz) &nbsp;&middot;&nbsp;
 > Instagram [@ndimatteo](https://instagram.com/ndimatteo)
