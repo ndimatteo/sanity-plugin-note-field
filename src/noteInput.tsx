@@ -6,7 +6,7 @@ type noteSchemaType = Omit<ObjectSchemaType, 'options'> & {
 	options?: {
 		icon?: any
 		headline?: string
-		message: any
+		message: string
 		tone?: any
 	}
 }
@@ -22,7 +22,7 @@ export function noteInput(args: noteInputProps) {
 	const icon = options?.icon
 	const headline = options?.headline
 	const message = options?.message
-	const tone = options?.tone
+	const tone = options?.tone ? options?.tone : 'primary';
 
 	if (!message) return null
 
@@ -33,7 +33,7 @@ export function noteInput(args: noteInputProps) {
 			padding={[3, 3, 4]}
 			radius={3}
 			shadow={1}
-			tone={tone || 'primary'}
+			tone={tone}
 		>
 			{headline && (
 				<Box marginBottom={3}>

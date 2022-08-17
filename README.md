@@ -3,6 +3,7 @@
 </h3>
 <p align="center">
   <strong>✨ Display inline notes in your schemas ✨</strong>
+  Now Ready for Sanity Studio V3
 </p>
 
 ![sanity-note-field](https://user-images.githubusercontent.com/737188/110528285-fcad1600-80e5-11eb-9551-1809cb8c42a3.png)
@@ -12,7 +13,7 @@
 Run the following command in your studio folder using the Sanity CLI:
 
 ```sh
-sanity install note-field
+npm i sanity-plugin-note-field
 ```
 
 ## Usage
