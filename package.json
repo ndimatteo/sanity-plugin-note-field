@@ -1,44 +1,87 @@
 {
   "name": "sanity-plugin-note-field",
-  "version": "1.1.4",
-  "description": "Display notes in your schemas.",
+  "version": "2.0.0",
+  "description": "Display inline notes within your schemas",
   "keywords": [
     "sanity",
-    "plugin",
+    "sanity-plugin",
     "note",
-    "custom input",
-    "sanity field"
+    "input",
+    "custom field"
   ],
-  "author": "Nick DiMatteo <hello@nickdimatteo.com>",
-  "license": "MIT",
+  "homepage": "https://github.com/ndimatteo/sanity-plugin-note-field#readme",
   "bugs": {
     "url": "https://github.com/ndimatteo/sanity-plugin-note-field/issues"
   },
-  "homepage": "https://github.com/ndimatteo/sanity-plugin-note-field",
-  "main": "dist/note.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ndimatteo/sanity-plugin-note-field.git"
+  },
+  "license": "MIT",
+  "author": "Nick DiMatteo <hello@nickdimatteo.com>",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "source": "./src/index.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.esm.js",
+      "default": "./dist/index.esm.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.esm.js",
+  "source": "./src/index.ts",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "sanity.json",
+    "src",
+    "v2-incompatible.js"
+  ],
   "scripts": {
-    "build": "babel -D -d dist/ src/",
-    "prepublishOnly": "yarn build"
+    "build": "run-s clean && plugin-kit verify-package --silent && pkg-utils build --strict && pkg-utils --strict",
+    "clean": "rimraf dist",
+    "format": "prettier --write --cache --ignore-unknown .",
+    "link-watch": "plugin-kit link-watch",
+    "lint": "eslint '**/*.+(ts|js|tsx|jsx)'",
+    "prepublishOnly": "run-s build",
+    "watch": "pkg-utils watch --strict"
   },
   "dependencies": {
-    "@babel/runtime": "^7.12.5",
-    "@sanity/ui": "^0.36.9"
+    "@sanity/incompatible-plugin": "^1.0.4",
+    "@sanity/ui": "^1.0.14",
+    "lodash": "^4.17.21",
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.10",
-    "@babel/core": "^7.12.10",
-    "@babel/plugin-proposal-class-properties": "^7.12.1",
-    "@babel/plugin-transform-runtime": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
-    "@babel/preset-react": "^7.12.10"
+    "@sanity/pkg-utils": "^2.2.3",
+    "@sanity/plugin-kit": "^3.1.4",
+    "@types/react": "^18.0.27",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "eslint": "^8.32.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-sanity": "^6.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.8.3",
+    "prettier-plugin-packagejson": "^2.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-is": "^18.2.0",
+    "rimraf": "^4.1.2",
+    "sanity": "^3.2.5",
+    "styled-components": "^5.3.6",
+    "typescript": "^4.9.4"
   },
   "peerDependencies": {
-    "react": "^16.14.0 || ^17 || ^18",
-    "react-dom": "^16.14.0 || ^17 || ^18"
+    "react": "^18",
+    "sanity": "^3"
   },
-  "sanityTemplate": {
-    "suggestedName": "note-field",
-    "requiresConfig": false,
-    "minimumBaseVersion": "2.1.0"
+  "engines": {
+    "node": ">=14"
   }
 }

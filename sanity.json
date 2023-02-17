@@ -1,12 +1,8 @@
 {
-  "paths": {
-    "source": "./src",
-    "compiled": "./dist"
-  },
   "parts": [
     {
-      "implements": "part:@sanity/base/schema-type",
-      "path": "./dist/schema-type.js"
+      "implements": "part:@sanity/base/sanity-root",
+      "path": "./v2-incompatible.js"
     }
   ]
 }

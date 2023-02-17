@@ -1,67 +1,90 @@
 <h3 align="center">
-  Sanity Note Fields
+  Note Fields for Sanity
 </h3>
 <p align="center">
-  <strong>✨ Display inline notes in your schemas ✨</strong>
+  <strong>Display inline notes within your schemas</strong><br />
+✨ uses Sanity UI ✨ multiple styles ✨ dark mode compatible ✨
 </p>
 
-![sanity-note-field](https://user-images.githubusercontent.com/737188/110528285-fcad1600-80e5-11eb-9551-1809cb8c42a3.png)
+![note-field-v3](https://user-images.githubusercontent.com/737188/219781860-0e43a189-3fce-48e6-8440-f70908deba54.png)
 
-## Install
+<br />
 
-Run the following command in your studio folder using the Sanity CLI:
+## 🔌 Install
 
 ```sh
-sanity install note-field
+yarn add sanity-plugin-note-field
+# or npm
+npm i sanity-plugin-note-field
 ```
 
-## Usage
+> **Warning** <br />This is a **Sanity Studio V3** plugin. For the V2 version, please refer to the [studio-v2 branch](https://github.com/ndimatteo/sanity-plugin-note-field/tree/studio-v2).
 
-Use it in your schema types:
+<br />
+
+## ⚙️ Configure
+
+```ts
+// `sanity.config.ts` / `sanity.config.js`:
+import { defineConfig } from 'sanity'
+import { noteField } from 'sanity-plugin-note-field'
+
+export default defineConfig({
+  // ...
+  plugins: [
+    // ...
+    noteField(),
+  ],
+})
+```
+
+<br />
+
+## 🗒️ Usage
 
 ```js
-{
-  name: 'note',
+defineField({
+  title: 'Important!',
+  description: 'a custom Message...',
+  name: 'myCustomNote',
   type: 'note',
   options: {
-    message: 'Your custom Message...'
-  }
-}
+    icon: () => <Warning size={20} weight="duotone" />,
+    tone: 'caution',
+  },
+})
 ```
 
-## Options
+### Properties
+| Name          | Type                      | Description                                                                  |
+| --------      | ------------------------- | ---------------------------------------------------------------------------- | 
+| `type`        | string                    | **(Required)** Value must be set to `note`.                                  |
+| `name`        | string                    | **(Required)** The field name. This will be the key in the data record.      |
+| `title`       | string                    | **(Optional)** Short title, appears in bold above the optional description.  |
+| `description` | string / React.Component  | **(Optional)** Long form message, displayed under the title.                 |
 
-You can also customize the color, add an icon and/or headline:
+### Options
+| Name          | Type                  | Description                                                                  |
+| --------      | --------------------- | ---------------------------------------------------------------------------- | 
+| `icon`        | React.Component       | **(Optional)** Display an icon alongside your note's title/message. <br /><small>Just remember that any schema file with icons in them should have a .jsx or .tsx extension.</small>                             |
+| `tone`        | string                | **(Optional)** The color of the note. <br /><small>Accepts any of the [Sanity UI Card](https://www.sanity.io/ui/docs/primitive/card#properties) tone values. Defaults to `primary`.</small>     |
 
-```js
-import React from 'react'
+<br />
 
-...
+## 🧪 Develop & test
 
-{
-  name: 'gridNote2',
-  type: 'note',
-  options: {
-    icon: FiAlertCircle,
-    headline: 'Hold up!',
-    message: <>A custom HTML message: <a href="#0" target="_blank">click here</a></>,
-    tone: 'caution'
-  }
-}
-```
+This plugin uses [@sanity/plugin-kit](https://github.com/sanity-io/plugin-kit)
+with default configuration for build & watch scripts.
 
-| Name     | Type      | Default   | Description                                                    |
-| -------- | --------- | --------- | -------------------------------------------------------------- | 
-| icon     | Component | `null`    | Specify an Icon Component, just as you would for your schemas  |
-| headline | string    | `null`    | Displays a headline above your note message                    |
-| message  | string    | `null`    | Required. Your note message (accepts HTML)                     |
-| tone     | string    | `primary` | Color style for your note, based on the Sanity UI Card options. <br />Values: `default` `transparent` `positive` `caution` `critical` `brand` |
+See [Testing a plugin in Sanity Studio](https://github.com/sanity-io/plugin-kit#testing-a-plugin-in-sanity-studio)
+on how to run this plugin with hotreload in the studio.
 
+<br />
 
-
-## License
+## 🤝 License
 
 ### MIT
+
 > [nickdimatteo.com](https://nickdimatteo.com) &nbsp;&middot;&nbsp;
 > Github [@ndimatteo](https://github.com/ndimatteo) &nbsp;&middot;&nbsp;
 > Instagram [@ndimatteo](https://instagram.com/ndimatteo)
