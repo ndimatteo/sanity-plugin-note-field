@@ -66,8 +66,8 @@ defineField({
 ### Options
 | Name          | Type                  | Description                                                                  |
 | --------      | --------------------- | ---------------------------------------------------------------------------- | 
-| `icon`        | React.Component       | **(Optional)** Display an icon alongside your note's title/message. <br /><small>Just remember that any schema file with icons in them should have a .jsx or .tsx extension.</small>                             |
-| `tone`        | string                | **(Optional)** The color of the note. <br /><small>Accepts any of the [Sanity UI Card](https://www.sanity.io/ui/docs/primitive/card#properties) tone values. Defaults to `primary`.</small>     |
+| `icon`        | React.Component       | **(Optional)** Display an icon alongside your note's title/message. <br />*Just remember that any schema file with icons in them should have a .jsx or .tsx extension.*                             |
+| `tone`        | string                | **(Optional)** The color of the note. <br />*Accepts any of the [Sanity UI Card](https://www.sanity.io/ui/docs/primitive/card#properties) tone values. Defaults to `primary`.*     |
 
 <br />
 
