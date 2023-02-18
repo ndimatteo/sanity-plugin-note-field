@@ -1,5 +1,5 @@
 import React from 'react'
-import startCase from 'lodash/startcase'
+import startCase from 'lodash/startCase'
 import { Card, Flex, Box, Inline, Heading, Text } from '@sanity/ui'
 
 import type { noteInputProps } from './types'
