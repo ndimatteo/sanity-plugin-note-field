@@ -7,7 +7,10 @@ import type { noteInputProps } from './types'
 const NoteInput = React.forwardRef((args: noteInputProps, ref: any) => {
   const { title, description, options } = args.schemaType
 
-  const displayTitle = startCase(args.id) === title ? null : title
+  // get last item in args.path array
+  const pathId = args.path[args.path?.length - 1] as any as string
+
+  const displayTitle = startCase(pathId) === title ? null : title
   const icon = options?.icon
   const tone = options?.tone ?? 'primary'
 
