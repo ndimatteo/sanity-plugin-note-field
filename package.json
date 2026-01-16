@@ -19,20 +19,28 @@
   },
   "license": "MIT",
   "author": "Nick DiMatteo <hello@nickdimatteo.com>",
+  "sideEffects": false,
+  "type": "module",
+  "module": "./dist/index.js",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
       "source": "./src/index.ts",
-      "require": "./dist/index.js",
-      "import": "./dist/index.esm.js",
-      "default": "./dist/index.esm.js"
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
     },
     "./package.json": "./package.json"
   },
   "main": "./dist/index.js",
-  "module": "./dist/index.esm.js",
-  "source": "./src/index.ts",
   "types": "./dist/index.d.ts",
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "import": "./dist/index.js",
+        "default": "./dist/index.js"
+      },
+      "./package.json": "./package.json"
+    }
+  },
   "files": [
     "dist",
     "sanity.json",
@@ -40,48 +48,65 @@
     "v2-incompatible.js"
   ],
   "scripts": {
-    "build": "run-s clean && plugin-kit verify-package --silent && pkg-utils build --strict && pkg-utils --strict",
     "clean": "rimraf dist",
-    "format": "prettier --write --cache --ignore-unknown .",
+    "build": "plugin-kit verify-package --silent && pkg-utils build --strict --check --clean",
+    "verify": "pkg-utils build --strict --check && plugin-kit verify-package --silent",
+    "watch": "pkg-utils watch --strict",
     "link-watch": "plugin-kit link-watch",
-    "lint": "eslint '**/*.+(ts|js|tsx|jsx)'",
-    "prepublishOnly": "run-s build",
-    "watch": "pkg-utils watch --strict"
+    "prepublishOnly": "npm run build && npm run verify",
+    "format": "prettier --write --cache --ignore-unknown .",
+    "lint": "eslint ."
   },
   "dependencies": {
-    "@sanity/incompatible-plugin": "^1.0.4",
-    "@sanity/ui": "^1.0.14",
+    "@sanity/incompatible-plugin": "^1.0.5",
+    "@sanity/ui": "^3.1.11",
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
-    "@sanity/pkg-utils": "^2.2.3",
-    "@sanity/plugin-kit": "^3.1.4",
-    "@types/react": "^18.0.27",
-    "@typescript-eslint/eslint-plugin": "^5.49.0",
-    "@typescript-eslint/parser": "^5.49.0",
-    "eslint": "^8.32.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-config-sanity": "^6.0.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.32.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
+    "@sanity/pkg-utils": "^10.3.2",
+    "@sanity/plugin-kit": "^4.0.20",
+    "@types/lodash": "^4.17.23",
+    "@types/react": "^19.2.8",
+    "@typescript-eslint/eslint-plugin": "^8.53.0",
+    "@typescript-eslint/parser": "^8.53.0",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-config-sanity": "^7.1.4",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.8.3",
-    "prettier-plugin-packagejson": "^2.4.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-is": "^18.2.0",
-    "rimraf": "^4.1.2",
-    "sanity": "^3.2.5",
-    "styled-components": "^5.3.6",
-    "typescript": "^4.9.4"
+    "prettier": "^3.8.0",
+    "prettier-plugin-packagejson": "^2.5.21",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-is": "^19.2.3",
+    "rimraf": "^6.1.2",
+    "sanity": "^5.4.0",
+    "styled-components": "^6.3.8",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   },
   "peerDependencies": {
     "react": "^18",
     "sanity": "^3"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
+  },
+  "browserslist": "extends @sanity/browserslist-config",
+  "sanityPlugin": {
+    "linkWatch": {
+      "command": "npm run watch",
+      "extensions": "ts,tsx"
+    }
+  },
+  "pkg-utils": {
+    "targets": {
+      "node": {
+        "runtime": "node"
+      }
+    }
   }
 }

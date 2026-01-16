@@ -1,6 +1,7 @@
 import React from 'react'
 import startCase from 'lodash/startCase'
-import { Card, Flex, Box, Inline, Heading, Text } from '@sanity/ui'
+import { Card, Flex, Box, Text } from '@sanity/ui'
+import { styled } from 'styled-components'
 
 import type { noteInputProps } from './types'
 
@@ -20,32 +21,38 @@ const NoteInput = React.forwardRef((args: noteInputProps, ref: any) => {
   const CustomIcon = icon as React.ElementType
 
   return (
-    <Card ref={ref} padding={[2, 4]} radius={3} tone={tone}>
-      {displayTitle && (
-        <Box marginBottom={description ? 2 : 0}>
-          <Inline space={1}>
-            {icon && <CustomIcon />}
-            <Heading size={1}>{displayTitle}</Heading>
-          </Inline>
-        </Box>
-      )}
+    <Card ref={ref} padding={4} radius={2} tone={tone}>
+      <Flex>
+        {icon && (
+          <Box>
+            <IconWrapper size={1}>
+              <CustomIcon />
+            </IconWrapper>
+          </Box>
+        )}
+        <Box flex={1} marginLeft={icon ? 3 : 0}>
+          {displayTitle && (
+            <Box marginBottom={description ? 3 : 0}>
+              <Text size={1} weight="medium">
+                {displayTitle}
+              </Text>
+            </Box>
+          )}
 
-      {description && (
-        <Flex align="center">
-          <Box style={{ flexShrink: 0, lineHeight: 0 }}>
-            {icon && !displayTitle && <CustomIcon style={{ fontSize: 24 }} />}
-          </Box>
-          <Box
-            marginLeft={displayTitle ? 0 : 3}
-            marginTop={!icon && displayTitle ? 1 : 0}
-          >
-            <Text size={[1, 1, 1]}>{description}</Text>
-          </Box>
-        </Flex>
-      )}
+          {description && (
+            <Text size={1} muted>
+              {description}
+            </Text>
+          )}
+        </Box>
+      </Flex>
     </Card>
   )
 })
+
+const IconWrapper = styled(Text)`
+  color: var(--card-icon-color);
+`
 
 NoteInput.displayName = 'NoteInput'
 

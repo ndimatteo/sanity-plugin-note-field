@@ -8,9 +8,14 @@ export const noteField = definePlugin(() => {
     schema: {
       types: [
         defineType({
-          title: 'Note',
           name: 'note',
-          type: 'string',
+          type: 'object',
+          fields: [
+            {
+              name: 'value',
+              type: 'string',
+            },
+          ],
           components: {
             input: NoteInput,
             field: (props) => <>{props.children}</>,
